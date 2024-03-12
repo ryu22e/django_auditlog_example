@@ -5,7 +5,12 @@ description = "Add your description here"
 authors = [
     { name = "Ryuji TSUTSUI", email = "ryu22e@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "django>=5.0.3",
+    "django-auditlog>=2.3.0",
+    "djangorestframework>=3.14.0",
+    "markdown>=3.5.2",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
