@@ -40,6 +40,14 @@ updates:
         - "distlib"
         - "filelock"
         - "platformdirs"
+    pytest-django-dependencies:
+      dependency-type: "development"
+      patterns:
+        - "pytest-django"
+        - "pytest"
+        - "iniconfig"
+        - "packaging"
+        - "pluggy"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
