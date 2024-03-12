@@ -24,6 +24,7 @@ python-dateutil==2.9.0.post0
     # via django-auditlog
 pytz==2024.1
     # via djangorestframework
+ruff==0.3.2
 six==1.16.0
     # via python-dateutil
 sqlparse==0.4.4
