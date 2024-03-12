@@ -33,4 +33,4 @@ allow-direct-references = true
 packages = ["src/django_auditlog_example"]
 
 [tool.pytest.ini_options]
-python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
+python_files = ["test_*.py", "*_test.py", "tests.py"]
