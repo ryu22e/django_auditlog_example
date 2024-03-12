@@ -16,6 +16,30 @@ updates:
     - dependency-name: "django"
       versions: [">=5.1.0"]
     - dependency-name: "ruff"
+  groups:
+    django-dependencies:
+      dependency-type: "production"
+      patterns:
+        - "Django"
+        - "django*"
+        - "asgiref"
+        - "sqlparse"
+        - "python-dateutil"
+        - "six"
+        - "pytz"
+    pre-commit-dependencies:
+      dependency-type: "development"
+      patterns:
+        - "pre-commit"
+        - "cfgv"
+        - "identify"
+        - "nodeenv"
+        - "setuptools"
+        - "PyYAML"
+        - "virtualenv"
+        - "distlib"
+        - "filelock"
+        - "platformdirs"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
