@@ -13,6 +13,8 @@ updates:
   assignees:
   - ryu22e
   ignore:
+    - dependency-name: "django"
+      versions: [">=5.1.0"]
     - dependency-name: "ruff"
 - package-ecosystem: "github-actions"
   directory: "/"
