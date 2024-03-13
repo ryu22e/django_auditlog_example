@@ -17,3 +17,15 @@ def test_redirect_to_login_page_when_accessing_home_page_without_login(client, d
     actual = client.get(reverse("books:home"))
 
     assertRedirects(actual, reverse("login") + "?next=" + reverse("books:home"))
+
+
+def test_show_detail_page(client, django_user_model, book_factory):
+    username = "user"
+    password = "testpass"
+    user = django_user_model.objects.create_user(username=username, password=password)
+    client.force_login(user)
+    book = book_factory()
+
+    actual = client.get(reverse("books:detail", kwargs={"pk": book.pk}))
+
+    assert actual.status_code == 200
