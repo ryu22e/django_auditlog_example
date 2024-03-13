@@ -34,3 +34,8 @@ packages = ["src/django_auditlog_example"]
 
 [tool.pytest.ini_options]
 python_files = ["test_*.py", "*_test.py", "tests.py"]
+DJANGO_SETTINGS_MODULE = "django_auditlog_example.settings"
+FAIL_INVALID_TEMPLATE_VARS = true
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
