@@ -29,3 +29,14 @@ def test_show_detail_page(client, django_user_model, book_factory):
     actual = client.get(reverse("books:detail", kwargs={"pk": book.pk}))
 
     assert actual.status_code == 200
+
+
+def test_redirect_to_login_page_when_accessing_detail_page_without_login(
+    client, db, book_factory
+):
+    book = book_factory()
+    url = reverse("books:detail", kwargs={"pk": book.pk})
+
+    actual = client.get(url)
+
+    assertRedirects(actual, reverse("login") + "?next=" + url)
