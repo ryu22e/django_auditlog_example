@@ -1,4 +1,5 @@
 from django.urls import reverse
+from auditlog.models import LogEntry
 from pytest_django.asserts import assertRedirects
 
 
@@ -40,3 +41,23 @@ def test_redirect_to_login_page_when_accessing_detail_page_without_login(
     actual = client.get(url)
 
     assertRedirects(actual, reverse("login") + "?next=" + url)
+
+
+def test_record_log_entry_when_accessing_detail_page(
+    client, django_user_model, book_factory
+):
+    username = "user"
+    password = "testpass"
+    user = django_user_model.objects.create_user(username=username, password=password)
+    client.force_login(user)
+    book = book_factory()
+
+    actual = client.get(reverse("books:detail", kwargs={"pk": book.pk}))
+
+    assert actual.status_code == 200
+    log_entry = (
+        LogEntry.objects.get_for_object(book)
+        .filter(action=LogEntry.Action.ACCESS)
+        .first()
+    )
+    assert log_entry is not None
