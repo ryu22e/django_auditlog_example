@@ -48,6 +48,21 @@ updates:
         - "iniconfig"
         - "packaging"
         - "pluggy"
+    pytest-factoryboy-dependencies:
+      dependency-type: "development"
+      patterns:
+        - "pytest-factoryboy"
+        - "factory-boy"
+        - "Faker"
+        - "python-dateutil"
+        - "six"
+        - "inflection"
+        - "packaging"
+        - "pytest"
+        - "iniconfig"
+        - "packaging"
+        - "pluggy"
+        - "typing_extensions"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:

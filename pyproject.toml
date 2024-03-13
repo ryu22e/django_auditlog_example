@@ -24,6 +24,8 @@ dev-dependencies = [
     "ruff==0.3.2",
     "pre-commit>=3.6.2",
     "pytest-django>=4.8.0",
+    "factory_boy>=3.3.0",
+    "pytest-factoryboy>=2.7.0",
 ]
 
 [tool.hatch.metadata]
