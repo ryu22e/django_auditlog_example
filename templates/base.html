@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block nosubtitle %}{% block subtitle %}{% endblock %}{% endblock %}django_auditlog_example</title>
+</head>
+<body>
+  <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li>
+      {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'books:home' %}">Books</a></li>
+    {% endif %}
+    {% if user.is_staff %}
+    <li><a href="{% url 'admin:index' %}">Admin</a></li>
+    {% endif %}
+  </ul>
+  {% block content %}{% endblock %}
+  {% block extra_body %}{% endblock %}
+</body>
+</html>

@@ -22,10 +22,16 @@ django-auditlog==2.3.0
     # via django-auditlog-example
 djangorestframework==3.14.0
     # via django-auditlog-example
+factory-boy==3.3.0
+    # via pytest-factoryboy
+faker==24.1.0
+    # via factory-boy
 filelock==3.13.1
     # via virtualenv
 identify==2.5.35
     # via pre-commit
+inflection==0.5.1
+    # via pytest-factoryboy
 iniconfig==2.0.0
     # via pytest
 markdown==3.5.2
@@ -34,6 +40,7 @@ nodeenv==1.8.0
     # via pre-commit
 packaging==24.0
     # via pytest
+    # via pytest-factoryboy
 platformdirs==4.2.0
     # via virtualenv
 pluggy==1.4.0
@@ -41,9 +48,12 @@ pluggy==1.4.0
 pre-commit==3.6.2
 pytest==8.1.1
     # via pytest-django
+    # via pytest-factoryboy
 pytest-django==4.8.0
+pytest-factoryboy==2.7.0
 python-dateutil==2.9.0.post0
     # via django-auditlog
+    # via faker
 pytz==2024.1
     # via djangorestframework
 pyyaml==6.0.1
@@ -53,6 +63,8 @@ six==1.16.0
     # via python-dateutil
 sqlparse==0.4.4
     # via django
+typing-extensions==4.10.0
+    # via pytest-factoryboy
 virtualenv==20.25.1
     # via pre-commit
 setuptools==69.1.1

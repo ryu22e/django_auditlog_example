@@ -24,6 +24,8 @@ dev-dependencies = [
     "ruff==0.3.2",
     "pre-commit>=3.6.2",
     "pytest-django>=4.8.0",
+    "factory_boy>=3.3.0",
+    "pytest-factoryboy>=2.7.0",
 ]
 
 [tool.hatch.metadata]
@@ -34,3 +36,8 @@ packages = ["src/django_auditlog_example"]
 
 [tool.pytest.ini_options]
 python_files = ["test_*.py", "*_test.py", "tests.py"]
+DJANGO_SETTINGS_MODULE = "django_auditlog_example.settings"
+FAIL_INVALID_TEMPLATE_VARS = true
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
