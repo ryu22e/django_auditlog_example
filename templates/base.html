@@ -12,6 +12,7 @@
         <form action="{% url 'logout' %}" method="post">
           {% csrf_token %}
           <button type="submit">Logout</button>
+        </form>
       {% else %}
         <a href="{% url 'login' %}">Login</a>
       {% endif %}
@@ -24,5 +25,6 @@
     {% endif %}
   </ul>
   {% block content %}{% endblock %}
+  {% block extra_body %}{% endblock %}
 </body>
 </html>

@@ -5,7 +5,33 @@
   <h1>Books</h1>
   <ul>
     {% for book in books %}
-    <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+    <li>
+      <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+      <button class="detail-button" data-pk="{{ book.pk }}">Show detail via API</button>
+    </li>
     {% endfor %}
   </ul>
+
+  <span id="book-detail"></span>
+{% endblock %}
+
+{% block extra_body %}
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll('.detail-button');
+      const apiEndpoint = '{% url 'books:api:book-detail' 123 %}';
+
+      buttons.forEach(button => {
+        console.log(button);
+        button.addEventListener('click', (e) => {
+          const bookDetail = document.getElementById('book-detail');
+          fetch(apiEndpoint.replace('123', e.target.dataset.pk))
+            .then(response => response.text())
+            .then(data => {
+              bookDetail.innerHTML = data;
+            });
+        });
+      });
+    })();
+  </script>
 {% endblock %}

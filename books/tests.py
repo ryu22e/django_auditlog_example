@@ -61,3 +61,43 @@ def test_record_log_entry_when_accessing_detail_page(
         .first()
     )
     assert log_entry is not None
+
+
+def test_get_book_detail_from_api(client, django_user_model, book_factory):
+    username = "user"
+    password = "testpass"
+    user = django_user_model.objects.create_user(username=username, password=password)
+    client.force_login(user)
+    book = book_factory()
+
+    actual = client.get(reverse("books:api:book-detail", kwargs={"pk": book.pk}))
+
+    assert actual.status_code == 200
+
+
+def test_not_get_book_detail_from_api_without_login(client, db, book_factory):
+    book = book_factory()
+
+    actual = client.get(reverse("books:api:book-detail", kwargs={"pk": book.pk}))
+
+    assert actual.status_code == 403
+
+
+def test_record_log_entry_when_get_book_detail_from_api(
+    client, django_user_model, book_factory
+):
+    username = "user"
+    password = "testpass"
+    user = django_user_model.objects.create_user(username=username, password=password)
+    client.force_login(user)
+    book = book_factory()
+
+    actual = client.get(reverse("books:api:book-detail", kwargs={"pk": book.pk}))
+
+    assert actual.status_code == 200
+    log_entry = (
+        LogEntry.objects.get_for_object(book)
+        .filter(action=LogEntry.Action.ACCESS)
+        .first()
+    )
+    assert log_entry is not None
