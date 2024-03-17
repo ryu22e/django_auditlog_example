@@ -7,7 +7,7 @@ authors = [
 ]
 dependencies = [
     "django>=5.0, <5.1",
-    "django-auditlog>=2.3.0",
+    "django-auditlog>=2.3.0, <3.0.0",
     "djangorestframework>=3.14.0",
     "markdown>=3.5.2",
 ]
