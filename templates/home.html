@@ -3,4 +3,13 @@
 {% block nosubtitle %}{% endblock %}
 {% block content %}
   <h1>django_auditlog_example</h1>
+  {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}!</p>
+    <ul>
+      <li>Registering Books from <a href="{% url 'admin:index' %}">Admin</a> will record an audit log.</li>
+      <li>An audit log is recorded when you view registered data from <a href="{% url 'books:home' %}">Books</a>.</li>
+    </ul>
+  {% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> first</p>
+  {% endif %}
 {% endblock %}
