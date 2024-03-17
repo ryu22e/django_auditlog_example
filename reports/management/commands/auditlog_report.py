@@ -10,7 +10,7 @@ class Command(BaseCommand):
     help = "Output audit log report"
 
     def _generate_row(self, log_entry):
-        return f"{log_entry.timestamp} {log_entry.actor} {log_entry.content_type} {log_entry.action} {log_entry.changes}"
+        return f"{log_entry.timestamp} {log_entry.get_action_display()} {log_entry.content_type} {log_entry.action} {log_entry.changes}"
 
     def add_arguments(self, parser):
         parser.add_argument("--start_datetime", "-s", type=str, help="Start datetime")
