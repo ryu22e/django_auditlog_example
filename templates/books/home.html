@@ -5,10 +5,12 @@
   <h1>Books</h1>
   <ul>
     {% for book in books %}
-    <li>
-      <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
-      <button class="detail-button" data-pk="{{ book.pk }}">Show detail via API</button>
-    </li>
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        <button class="detail-button" data-pk="{{ book.pk }}">Show detail via API</button>
+      </li>
+    {% empty %}
+      <li>No books found</li>
     {% endfor %}
   </ul>
 
