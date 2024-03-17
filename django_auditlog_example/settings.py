@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "auditlog",
     "accounts",
     "books",
-    "reports",
+    "auditlog_extensions",
 ]
 
 MIDDLEWARE = [
