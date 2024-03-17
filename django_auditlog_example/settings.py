@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "auditlog",
     "accounts",
     "books",
+    "auditlog_extensions",
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,12 @@ LOGOUT_REDIRECT_URL = reverse_lazy("login")
 
 # django-auditlog settings
 AUDITLOG_INCLUDE_ALL_MODELS = True
+# Uncomment the following line if you want to exclude some models from audit logging
+# AUDITLOG_EXCLUDE_TRACKING_MODELS = (
+#     "accounts.User",
+# )
+# Uncomment the following line if you want to exclude some fields from audit logging
+# AUDITLOG_EXCLUDE_TRACKING_FIELDS = (
+#     "created",
+#     "modified"
+# )
